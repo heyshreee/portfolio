@@ -61,6 +61,17 @@ section.container {
   color: #00ff99;
 }
 
+.skills span:hover {
+  background-color: #00ff99;
+  color: #0a0a0a;
+  cursor: pointer;
+}
+
+.contact{
+    color: #ddd;
+    font-size: 1.2rem;
+}
+
 #matrix {
   position: fixed;
   top: 0; 
