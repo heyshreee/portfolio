@@ -40,7 +40,23 @@ yearSpan.textContent = currentYear;
 
 
 
+// Scroll reveal animations
+const sections = document.querySelectorAll('section');
 
+function revealOnScroll() {
+  const triggerBottom = window.innerHeight / 5 * 4;
+
+  sections.forEach(section => {
+    const sectionTop = section.getBoundingClientRect().top;
+
+    if (sectionTop < triggerBottom) {
+      section.classList.add('visible', 'section-animate');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
 
 
 
