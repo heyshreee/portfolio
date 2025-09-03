@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "[ OK ] Starting ssh service...",
     "[ OK ] Mounting filesystems...",
     "[ OK ] Kali Linux Security Tools Loaded",
-    "[ OK ] Access granted for user: sriram",
+    "[ OK ] Access granted ✅ for user: sriram",
     "root@sriram:~$ Welcome to my portfolio"
   ];
 
