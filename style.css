@@ -42,6 +42,14 @@ section.container {
   position: relative;
   z-index: 1;
 }
+.hero .hero-content img {
+  transition: box-shadow 0.3s ease;
+}
+
+.hero .hero-content img:hover {
+  box-shadow: 0 0 20px 10px #00ff99, 0 0 60px 20px #00ff99;
+  filter: brightness(1.2);
+}
 
 .card {
   background-color: #1a1a1a;
@@ -110,4 +118,46 @@ section.container {
     border-color: transparent;
   }
 } 
+
+/* Fullscreen terminal intro */
+.terminal-screen {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: black;
+  color: #ffffff;
+  font-family: "Courier New", monospace;
+  font-size: 16px;
+  padding: 20px;
+  z-index: 9999;
+  overflow: hidden;
+}
+
+/* Blinking cursor */
+.cursor {
+  display: inline-block;
+  width: 10px;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%, 50% { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* Hide site content until intro ends */
+body.loading main, 
+body.loading nav {
+  display: none;
+}
+
+/* Smooth fade-out effect for intro */
+.fade-out {
+  animation: fadeOut 1s ease forwards;
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
 

@@ -79,5 +79,64 @@ revealOnScroll();
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const terminal = document.getElementById("terminal-output");
+  const intro = document.getElementById("terminal-intro");
+
+  const lines = [
+    "[ OK ] Starting system log daemon...",
+    "[ OK ] Initializing network interfaces...",
+    "[ OK ] Loading kernel modules...",
+    "[ OK ] Starting ssh service...",
+    "[ OK ] Mounting filesystems...",
+    "[ OK ] Kali Linux Security Tools Loaded",
+    "[ OK ] Access granted for user: sriram",
+    "root@sriram:~$ Welcome to my portfolio"
+  ];
+
+  let lineIndex = 0;
+
+  function finishIntro() {
+    intro.classList.add("fade-out"); // Smooth exit
+    setTimeout(() => {
+      intro.style.display = "none";
+      document.body.classList.remove("loading");
+    }, 1000); // Match fade duration
+  }
+
+  function typeLine() {
+    if (lineIndex < lines.length) {
+      let line = lines[lineIndex];
+      let charIndex = 0;
+      let interval = setInterval(() => {
+        terminal.textContent += line[charIndex];
+        charIndex++;
+        if (charIndex === line.length) {
+          clearInterval(interval);
+          terminal.textContent += "\n";
+          lineIndex++;
+          setTimeout(typeLine, 400);
+        }
+      }, 30);
+    } else {
+      // After all lines finish, show "Press Enter or Tap"
+      setTimeout(() => {
+        terminal.textContent += "\nPress [Enter] or Tap to continue...";
+        enableSkip();
+      }, 500);
+    }
+  }
+
+  function enableSkip() {
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") finishIntro();
+    });
+    document.addEventListener("click", finishIntro);
+    document.addEventListener("touchstart", finishIntro);
+  }
+
+  typeLine();
+});
+
 
 
