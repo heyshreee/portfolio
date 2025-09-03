@@ -1,3 +1,21 @@
+// Typed.js initialization
+document.addEventListener("DOMContentLoaded", function () {
+  new Typed("#typed-text", {
+    strings: [
+      "Aspiring Cybersecurity Analyst",
+      "Ethical Hacker in Training",
+      "Linux & Networking Enthusiast",
+      "CTF Player 🕵️‍♂️"
+    ],
+    typeSpeed: 70,
+    backSpeed: 40,
+    backDelay: 1500,
+    loop: true
+  });
+});
+
+
+
 // Matrix rain effect
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");

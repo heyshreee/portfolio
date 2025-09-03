@@ -95,3 +95,19 @@ section.container {
   opacity: 1;
   transform: translateY(0);
 }
+
+#typed-text {
+  color: #00ff99;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+}
+#typed-text.blinking {
+  animation: blink 0.7s step-end infinite;
+}
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+} 
+
