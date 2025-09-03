@@ -74,11 +74,6 @@ window.addEventListener('scroll', revealOnScroll);
 revealOnScroll();
 
 
-
-
-
-
-
 document.addEventListener("DOMContentLoaded", () => {
   const terminal = document.getElementById("terminal-output");
   const intro = document.getElementById("terminal-intro");
@@ -138,5 +133,80 @@ document.addEventListener("DOMContentLoaded", () => {
   typeLine();
 });
 
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const filterButtons = document.querySelectorAll(".filter-btn");
+  const projects = document.querySelectorAll(".project-item");
+
+  filterButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      // Remove "active" class from all buttons
+      filterButtons.forEach(btn => btn.classList.remove("active"));
+      button.classList.add("active");
+
+      const filter = button.getAttribute("data-filter");
+
+      projects.forEach(project => {
+        if (filter === "all" || project.getAttribute("data-category") === filter) {
+          project.classList.remove("hide");
+        } else {
+          project.classList.add("hide");
+        }
+      });
+    });
+  });
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleBtn = document.getElementById("chatbot-toggle");
+  const chatbotWindow = document.getElementById("chatbot-window");
+  const sendBtn = document.getElementById("chatbot-send");
+  const input = document.getElementById("chatbot-text");
+  const messages = document.getElementById("chatbot-messages");
+
+  // Toggle chatbot window
+  toggleBtn.addEventListener("click", () => {
+    chatbotWindow.style.display =
+      chatbotWindow.style.display === "flex" ? "none" : "flex";
+  });
+
+  // Send message
+  function sendMessage() {
+    const text = input.value.trim();
+    if (text === "") return;
+
+    // User message
+    const userMsg = document.createElement("div");
+    userMsg.textContent = "🧑: " + text;
+    messages.appendChild(userMsg);
+
+    // Bot reply (simple)
+    const botMsg = document.createElement("div");
+    setTimeout(() => {
+      botMsg.textContent = "🤖: " + getBotReply(text);
+      messages.appendChild(botMsg);
+      messages.scrollTop = messages.scrollHeight;
+    }, 500);
+
+    input.value = "";
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  sendBtn.addEventListener("click", sendMessage);
+  input.addEventListener("keypress", (e) => {
+    if (e.key === "Enter") sendMessage();
+  });
+
+  // Simple bot replies
+  function getBotReply(msg) {
+    msg = msg.toLowerCase();
+    if (msg.includes("hello") || msg.includes("hi")) return "Hello! 👋 How can I help?";
+    if (msg.includes("project")) return "Check out my GitHub projects in the Projects section.";
+    if (msg.includes("contact")) return "You can reach me at sriram@example.com 📧";
+    if (msg.includes("skills")) return "My key skills: Python, Linux, Wireshark, Nmap, Burp Suite 🛠️";
+    return "I’m still learning 🧑‍💻, but you can check the sections above for more info!";
+  }
+});
 
 

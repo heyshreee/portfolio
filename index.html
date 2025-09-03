@@ -81,23 +81,46 @@
 
     <!-- Projects -->
     <section id="projects" class="container py-5">
-      <h2>Projects</h2>
+      <h2 class="mb-4">Projects</h2>
+
+      <!-- Filter Buttons -->
+      <div class="text-center mb-4">
+        <button
+          class="btn btn-outline-success filter-btn active"
+          data-filter="all"
+        >
+          All
+        </button>
+        <button class="btn btn-outline-success filter-btn" data-filter="ml">
+          ML
+        </button>
+        <button class="btn btn-outline-success filter-btn" data-filter="cyber">
+          Cybersecurity
+        </button>
+        <button class="btn btn-outline-success filter-btn" data-filter="tools">
+          Tools
+        </button>
+      </div>
+
+      <!-- Project Cards -->
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 project-item" data-category="ml">
           <div class="card p-3">
             <h5>Spam Email Detection</h5>
             <p>Machine learning project to detect phishing emails.</p>
             <a href="#">View on GitHub</a>
           </div>
         </div>
-        <div class="col-md-4">
+
+        <div class="col-md-4 project-item" data-category="cyber">
           <div class="card p-3">
             <h5>Network Packet Analyzer</h5>
             <p>Python-based packet sniffer for analyzing traffic.</p>
             <a href="#">View on GitHub</a>
           </div>
         </div>
-        <div class="col-md-4">
+
+        <div class="col-md-4 project-item" data-category="tools">
           <div class="card p-3">
             <h5>CTF Writeups</h5>
             <p>Solutions and walkthroughs of Capture the Flag challenges.</p>
@@ -150,6 +173,24 @@
       </div>
     </footer>
 
+    <!-- Chatbot Button -->
+    <div id="chatbot">
+      <button id="chatbot-toggle">💬</button>
+      <div id="chatbot-window">
+        <div id="chatbot-header">Sriram Bot 🤖</div>
+        <div id="chatbot-messages"></div>
+        <div id="chatbot-input">
+          <input
+            type="text"
+            id="chatbot-text"
+            placeholder="Type a message..."
+          />
+          <button id="chatbot-send">➤</button>
+        </div>
+      </div>
+    </div>
+
+
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
@@ -158,4 +199,3 @@
 </html>
 
 <!-- https://github.com/Sri-Ram-Fevemz/dragon-war.git -->
-
