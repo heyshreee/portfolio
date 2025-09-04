@@ -328,3 +328,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const lastVisitorIP = fakeIPs[Math.floor(Math.random() * fakeIPs.length)];
   typeText(lastVisitorEl, lastVisitorIP);
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const skillProgress = document.querySelectorAll(".skill-progress");
+
+  skillProgress.forEach(bar => {
+    const value = bar.getAttribute("data-progress");
+    bar.style.setProperty('--progress', value + '%');
+  });
+});
+
+
