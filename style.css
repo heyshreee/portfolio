@@ -62,6 +62,7 @@ section.container {
 .card a {
   color: #00ff99;
   text-decoration: none;
+  margin: 5px 0;
 }
 
 
