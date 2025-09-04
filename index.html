@@ -9,7 +9,11 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2092/2092663.png" type="image/png">
+    <link
+      rel="shortcut icon"
+      href="https://cdn-icons-png.flaticon.com/512/2092/2092663.png"
+      type="image/png"
+    />
   </head>
 
   <body class="loading">
@@ -46,6 +50,9 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#visitor-stats">Visitor</a>
           </li>
         </ul>
       </div>
@@ -168,24 +175,44 @@
       </p>
     </section>
 
+    <section id="visitor-stats" class="visitor-stats">
+      <h2>Visitor Dashboard</h2>
+      <div class="stats-grid">
+        <div class="stat">
+          <h3 id="active-visitors">0</h3>
+          <p>Active Visitors</p>
+        </div>
+        <div class="stat">
+          <h3 id="total-visitors">0</h3>
+          <p>Total Visitors</p>
+        </div>
+        <div class="stat">
+          <h3 id="last-visitor">0.0.0.0</h3>
+          <p>Last Seen Visitor</p>
+        </div>
+      </div>
+    </section>
+
     <footer>
       <div class="container text-center py-3">
         &copy; <span id="year">2025</span> Sriram. All rights reserved.
       </div>
     </footer>
 
-   <div id="mini-terminal-container">
-  <button id="terminal-toggle">🖥️</button>
-  <div id="mini-terminal">
-    <div id="terminal-header">root@sriram:~</div>
-    <div id="terminal-body">
-      <pre id="terminal-output-mini"></pre>
-      <input id="terminal-input-mini" type="text" placeholder="Type command..." />
+    <div id="mini-terminal-container">
+      <button id="terminal-toggle">🖥️</button>
+      <div id="mini-terminal">
+        <div id="terminal-header">root@sriram:~</div>
+        <div id="terminal-body">
+          <pre id="terminal-output-mini"></pre>
+          <input
+            id="terminal-input-mini"
+            type="text"
+            placeholder="Type command..."
+          />
+        </div>
+      </div>
     </div>
-  </div>
-</div>
-
-
 
     <script src="script.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
