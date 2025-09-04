@@ -15,7 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 // Matrix rain effect
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
@@ -47,7 +46,6 @@ function draw() {
 }
 
 setInterval(draw, 33);
-
 
 
 // Set current year in footer
@@ -158,55 +156,47 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+
 document.addEventListener("DOMContentLoaded", () => {
-  const toggleBtn = document.getElementById("chatbot-toggle");
-  const chatbotWindow = document.getElementById("chatbot-window");
-  const sendBtn = document.getElementById("chatbot-send");
-  const input = document.getElementById("chatbot-text");
-  const messages = document.getElementById("chatbot-messages");
+  const terminalContainer = document.getElementById("mini-terminal");
+  const toggleBtn = document.getElementById("terminal-toggle");
+  const terminalOutputMini = document.getElementById("terminal-output-mini");
+  const terminalInputMini = document.getElementById("terminal-input-mini");
 
-  // Toggle chatbot window
+  // Toggle open/close
   toggleBtn.addEventListener("click", () => {
-    chatbotWindow.style.display =
-      chatbotWindow.style.display === "flex" ? "none" : "flex";
+    terminalContainer.style.display =
+      terminalContainer.style.display === "flex" ? "none" : "flex";
   });
 
-  // Send message
-  function sendMessage() {
-    const text = input.value.trim();
-    if (text === "") return;
-
-    // User message
-    const userMsg = document.createElement("div");
-    userMsg.textContent = "🧑: " + text;
-    messages.appendChild(userMsg);
-
-    // Bot reply (simple)
-    const botMsg = document.createElement("div");
-    setTimeout(() => {
-      botMsg.textContent = "🤖: " + getBotReply(text);
-      messages.appendChild(botMsg);
-      messages.scrollTop = messages.scrollHeight;
-    }, 500);
-
-    input.value = "";
-    messages.scrollTop = messages.scrollHeight;
+  function printToTerminal(text) {
+    terminalOutputMini.textContent += text + "\n";
+    terminalOutputMini.scrollTop = terminalOutputMini.scrollHeight;
   }
 
-  sendBtn.addEventListener("click", sendMessage);
-  input.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") sendMessage();
+  terminalInputMini.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const command = terminalInputMini.value.trim();
+      printToTerminal("root@sriram:~$ " + command);
+
+      // Fake commands
+      if (command === "help") {
+        printToTerminal("Available commands: help, about, skills, clear");
+      } else if (command === "about") {
+        printToTerminal("I am Sriram, Aspiring Cybersecurity Analyst 🚀");
+      } else if (command === "skills") {
+        printToTerminal("Python, Linux, Networking, Wireshark, Nmap, Burp Suite");
+      } else if (command === "clear") {
+        terminalOutputMini.textContent = "";
+      } else if (command) {
+        printToTerminal("Command not found: " + command);
+      }
+
+      terminalInputMini.value = "";
+    }
   });
 
-  // Simple bot replies
-  function getBotReply(msg) {
-    msg = msg.toLowerCase();
-    if (msg.includes("hello") || msg.includes("hi")) return "Hello! 👋 How can I help?";
-    if (msg.includes("project")) return "Check out my GitHub projects in the Projects section.";
-    if (msg.includes("contact")) return "You can reach me at sriram@example.com 📧";
-    if (msg.includes("skills")) return "My key skills: Python, Linux, Wireshark, Nmap, Burp Suite 🛠️";
-    return "I’m still learning 🧑‍💻, but you can check the sections above for more info!";
-  }
+  // Initial welcome
+  printToTerminal("Welcome to Sriram’s Mini Terminal");
+  printToTerminal("Type 'help' to see available commands.\n");
 });
-
-

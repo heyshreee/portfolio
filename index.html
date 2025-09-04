@@ -9,6 +9,7 @@
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/2092/2092663.png" type="image/png">
   </head>
 
   <body class="loading">
@@ -173,22 +174,17 @@
       </div>
     </footer>
 
-    <!-- Chatbot Button -->
-    <div id="chatbot">
-      <button id="chatbot-toggle">💬</button>
-      <div id="chatbot-window">
-        <div id="chatbot-header">Sriram Bot 🤖</div>
-        <div id="chatbot-messages"></div>
-        <div id="chatbot-input">
-          <input
-            type="text"
-            id="chatbot-text"
-            placeholder="Type a message..."
-          />
-          <button id="chatbot-send">➤</button>
-        </div>
-      </div>
+   <div id="mini-terminal-container">
+  <button id="terminal-toggle">🖥️</button>
+  <div id="mini-terminal">
+    <div id="terminal-header">root@sriram:~</div>
+    <div id="terminal-body">
+      <pre id="terminal-output-mini"></pre>
+      <input id="terminal-input-mini" type="text" placeholder="Type command..." />
     </div>
+  </div>
+</div>
+
 
 
     <script src="script.js"></script>
