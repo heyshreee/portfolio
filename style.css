@@ -196,13 +196,13 @@ section.container {
   color: #ddd;
 }
 .visitor-stats {
-  background-color: #0a0a0a;
-  color: #00ff99;
+  /* background-color: #0a0a0a;  */
+  color: #fff;
   text-align: center;
   padding: 60px 20px;
-  border: 2px solid #00ff99;
+  /* border: 2px solid #00ff99; */
   border-radius: 15px;
-  box-shadow: 0 0 20px #00ff99, 0 0 40px #00ff99 inset;
+  /* box-shadow: 0 0 20px #00ff99, 0 0 40px #00ff99 inset; */
   font-family: 'Courier New', monospace;
 }
 
@@ -402,3 +402,4 @@ body.loading nav {
   font-family: monospace;
   font-size: 14px;
 }
+
