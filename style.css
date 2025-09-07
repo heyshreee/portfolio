@@ -334,13 +334,22 @@ body.loading nav {
 }
 
 .project-item {
-  transition: all 0.4s ease;
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  opacity: 1;
+  transform: scale(1);
+}
+
+.project-item.faded {
+  opacity: 0;
+  transform: scale(0.85);
+  pointer-events: none;
 }
 
 .project-item.hide {
   opacity: 0;
   transform: scale(0.9);
   pointer-events: none;
+  display: none;
 }
 #mini-terminal-container {
   position: fixed;

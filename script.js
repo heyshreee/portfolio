@@ -127,10 +127,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   typeLine();
 });
-
 document.addEventListener("DOMContentLoaded", () => {
   const filterButtons = document.querySelectorAll(".filter-btn");
-  const projects = document.querySelectorAll(".project-item");
+  const projectContainer = document.querySelector("#projects .row");
+  const projects = Array.from(document.querySelectorAll(".project-item"));
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -140,19 +140,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const filter = button.getAttribute("data-filter");
 
-      projects.forEach((project) => {
-        if (
-          filter === "all" ||
-          project.getAttribute("data-category") === filter
-        ) {
-          project.classList.remove("hide");
+      // Reorder projects: filtered first, then the rest
+      const filtered = projects.filter(
+        (p) => filter === "all" || p.getAttribute("data-category") === filter
+      );
+      const others = projects.filter(
+        (p) => filter !== "all" && p.getAttribute("data-category") !== filter
+      );
+
+      // Clear container and append in new order
+      projectContainer.innerHTML = "";
+      [...filtered, ...others].forEach((p) => {
+        projectContainer.appendChild(p);
+
+        if (filtered.includes(p)) {
+          p.classList.remove("faded");
         } else {
-          project.classList.add("hide");
+          p.classList.add("faded");
         }
       });
     });
   });
 });
+
 document.addEventListener("DOMContentLoaded", () => {
   const terminalContainer = document.getElementById("mini-terminal");
   const toggleBtn = document.getElementById("terminal-toggle");
